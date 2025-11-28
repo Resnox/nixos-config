@@ -7,6 +7,7 @@
 
     packages = with pkgs; [
       btop
+      xdg-desktop-portal-termfilechooser
     ];
 
     stateVersion = "25.05";
@@ -71,13 +72,14 @@
         window-rules = [
         	{
         		geometry-corner-radius = {
-				  bottom-left = 8.0;
-				  bottom-right = 8.0;
-				  top-left = 8.0;
-				  top-right = 8.0;
+              bottom-left = 8.0;
+              bottom-right = 8.0;
+              top-left = 8.0;
+              top-right = 8.0;
         		};
-        		opacity = 0.925;
+        		opacity = 0.9;
         		clip-to-geometry = true;
+            draw-border-with-background = false;
         	}
         ];
 
@@ -85,6 +87,7 @@
 
         spawn-at-startup = [
           { argv = [ "noctalia-shell" ]; }
+          { argv = [ "lxqt-policykit-agent" ]; }
         ];
 
         clipboard = {
@@ -178,27 +181,27 @@
           "Mod+C".action = spawn "noctalia-shell" "ipc" "call" "launcher" "calculator";
           "Mod+X".action = spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard";
 
-		  "Mod+WheelScrollDown" = {
-		  	action = focus-workspace-down;
-		  	cooldown-ms = 150;
-		  };
-  		  "Mod+WheelScrollUp" = {
-  		  	action = focus-workspace-up;
-  		  	cooldown-ms = 150;
-  		  };
-  		  "Mod+WheelScrollLeft" = {
-  		  	action = focus-column-left;
-  		  	cooldown-ms = 150;
-  		  };
-  		  "Mod+WheelScrollRight" = {
-  		  	action = focus-column-right;
-  		  	cooldown-ms = 150;
-  		  };
+          "Mod+WheelScrollDown" = {
+            action = focus-workspace-down;
+            cooldown-ms = 150;
+          };
+          "Mod+WheelScrollUp" = {
+            action = focus-workspace-up;
+            cooldown-ms = 150;
+          };
+          "Mod+WheelScrollLeft" = {
+            action = focus-column-left;
+            cooldown-ms = 150;
+          };
+          "Mod+WheelScrollRight" = {
+            action = focus-column-right;
+            cooldown-ms = 150;
+          };
 
-	  	  "Mod+parenright".action = switch-preset-column-width-back;
-  		  "Mod+Shift+parenright".action = set-column-width "-10%";
-		  "Mod+equal".action = switch-preset-column-width;
-  		  "Mod+Shift+equal".action = set-column-width "+10%";
+          "Mod+parenright".action = switch-preset-column-width-back;
+          "Mod+Shift+parenright".action = set-column-width "-10%";
+          "Mod+equal".action = switch-preset-column-width;
+          "Mod+Shift+equal".action = set-column-width "+10%";
           
           "Mod+Ctrl+Space".action = center-column;
           "Mod+Shift+Space".action = toggle-window-floating;
@@ -341,5 +344,5 @@
     };
   };
 
-  services.polkit-gnome.enable = true;  
+  services.lxqt-policykit-agent.enable = true;  
 }

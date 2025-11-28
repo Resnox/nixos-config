@@ -71,6 +71,10 @@
 
   services.pulseaudio.enable = false;
 
+  services.displayManager.lemurs = {
+    enable = true;
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -84,6 +88,15 @@
 
   services.upower = {
   	enable = true;
+  };
+
+  environment.etc."lemurs/wayland/niri" = {
+    enable = true;
+    mode = "0755";
+    text = ''
+      #! /bin/sh
+      niri-session
+    '';
   };
 
   environment.sessionVariables = {

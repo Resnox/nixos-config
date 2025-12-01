@@ -7,7 +7,6 @@
 
     packages = with pkgs; [
       btop
-      xdg-desktop-portal-termfilechooser
     ];
 
     stateVersion = "25.05";
@@ -18,16 +17,24 @@
     inputs.niri.homeModules.niri
   ];
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-termfilechooser ];
+    config.common."org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+  };
+
   programs = {
     niri = {
       enable = true;
+
+      # package = inputs.niri.packages.${pkgs.system}.niri-unstable;
 
       settings = {
         input = {
           keyboard.xkb.layout = "fr";
 
           focus-follows-mouse = {
-            enable = true;
+            enable = false;
           };
 
           touchpad = {
@@ -36,7 +43,7 @@
             disabled-on-external-mouse = true;
           };
         };
-  
+
         layout = {
           gaps = 8;
           preset-column-widths = [
@@ -67,7 +74,7 @@
             position = "bottom";
             place-within-column = true;
           };
-        };  
+        };
 
         window-rules = [
         	{
@@ -98,47 +105,47 @@
           "Mod+Shift+Return".action = spawn "kitty";
           "Mod+Shift+Q".action = close-window;
 
-          "XF86AudioRaiseVolume" = { 
+          "XF86AudioRaiseVolume" = {
             action = spawn "noctalia-shell" "ipc" "call" "volume" "increase";
-            allow-when-locked = true; 
-          };
-          "XF86AudioLowerVolume" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; 
-            allow-when-locked = true; 
-          };
-          "XF86AudioMute" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; 
-            allow-when-locked = true; 
-          };
-          "XF86AudioMicMute" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; 
-            allow-when-locked = true; 
-          };
-
-          "XF86AudioPlay" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "play"; 
             allow-when-locked = true;
           };
-          "XF86AudioStop" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "pause"; 
-            allow-when-locked = true; 
+          "XF86AudioLowerVolume" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "decrease";
+            allow-when-locked = true;
           };
-          "XF86AudioPrev" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "prev"; 
-            allow-when-locked = true; 
+          "XF86AudioMute" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput";
+            allow-when-locked = true;
           };
-          "XF86AudioNext" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "volume" "next"; 
-            allow-when-locked = true; 
+          "XF86AudioMicMute" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "muteInput";
+            allow-when-locked = true;
           };
 
-          "XF86MonBrightnessUp" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; 
-            allow-when-locked = true; 
+          "XF86AudioPlay" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "play";
+            allow-when-locked = true;
           };
-          "XF86MonBrightnessDown" = { 
-            action = spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; 
-            allow-when-locked = true; 
+          "XF86AudioStop" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "pause";
+            allow-when-locked = true;
+          };
+          "XF86AudioPrev" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "prev";
+            allow-when-locked = true;
+          };
+          "XF86AudioNext" = {
+            action = spawn "noctalia-shell" "ipc" "call" "volume" "next";
+            allow-when-locked = true;
+          };
+
+          "XF86MonBrightnessUp" = {
+            action = spawn "noctalia-shell" "ipc" "call" "brightness" "increase";
+            allow-when-locked = true;
+          };
+          "XF86MonBrightnessDown" = {
+            action = spawn "noctalia-shell" "ipc" "call" "brightness" "decrease";
+            allow-when-locked = true;
           };
 
           "Alt+Tab".action = toggle-overview;
@@ -162,7 +169,7 @@
           "Mod+egrave".action = focus-workspace 7;
           "Mod+underscore".action = focus-workspace 8;
           "Mod+ccedilla".action = focus-workspace 9;
-          
+
           "Mod+Shift+ampersand".action.move-column-to-workspace = 1;
           "Mod+Shift+eacute".action.move-column-to-workspace = 2;
           "Mod+Shift+quotedbl".action.move-column-to-workspace = 3;
@@ -175,7 +182,7 @@
 
           "Mod+Shift+Ctrl+Left".action = consume-or-expel-window-left;
           "Mod+Shift+Ctrl+Right".action = consume-or-expel-window-right;
-          
+
           "Mod+Space".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
           "Mod+L".action = spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend";
           "Mod+C".action = spawn "noctalia-shell" "ipc" "call" "launcher" "calculator";
@@ -202,7 +209,7 @@
           "Mod+Shift+parenright".action = set-column-width "-10%";
           "Mod+equal".action = switch-preset-column-width;
           "Mod+Shift+equal".action = set-column-width "+10%";
-          
+
           "Mod+Ctrl+Space".action = center-column;
           "Mod+Shift+Space".action = toggle-window-floating;
 
@@ -227,7 +234,7 @@
     micro = {
       enable = true;
     };
-   
+
     home-manager = {
       enable = true;
     };
@@ -235,7 +242,7 @@
     noctalia-shell = {
       enable = true;
 
-      settings = {      
+      settings = {
         bar = {
           enable = true;
           floating = true;
@@ -246,7 +253,7 @@
         };
 
         controlCenter = {
-          position = "center";	
+          position = "center";
         };
 
         ui = {
@@ -262,7 +269,7 @@
         };
 
         appLauncher = {
-          terminalCommand = "kitty -e";        	
+          terminalCommand = "kitty -e";
         };
       };
 
@@ -303,7 +310,7 @@
       	enable = true;
 
       	plugins = [
-      	  { name = "zsh-users/zsh-autosuggestions"; }      	 
+      	  { name = "zsh-users/zsh-autosuggestions"; }
       	];
       };
     };
@@ -344,5 +351,5 @@
     };
   };
 
-  services.lxqt-policykit-agent.enable = true;  
+  services.lxqt-policykit-agent.enable = true;
 }

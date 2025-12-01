@@ -32,6 +32,7 @@
       bitwarden-desktop
       teams-for-linux
       discord
+      xdg-desktop-portal-termfilechooser
     ];
   };
 
@@ -45,6 +46,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   console.keyMap = "fr";
+  services.xserver.xkb.layout = "fr";
 
   environment.systemPackages = with pkgs; [
     nano

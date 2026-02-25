@@ -18,6 +18,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = { self, nixpkgs, ...}@inputs:
@@ -38,8 +42,11 @@
 
           modules = [
             ./configuration.nix
+            ./modules/nixos
           ];
         };
       };
+
+      homeManagerModules.default = ./modules/home;
     };
 }

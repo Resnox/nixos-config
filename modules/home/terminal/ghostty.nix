@@ -15,7 +15,9 @@
           font-family = "JetBrains Mono";
           font-size = 12;
 
-          shell-integration = "zsh";
+          shell-integration = lib.mkIf config.terminal.zsh.enable "zsh";
+
+          theme = lib.mkIf config.desktop.noctalia.enable "noctalia";
         };
       };
     };

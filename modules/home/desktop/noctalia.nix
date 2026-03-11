@@ -14,6 +14,11 @@
         enable = true;
 
         settings = {
+          colorSchemes = {
+            predefinedScheme = "Osaka jade";
+            darkMode = true;
+          };
+
           bar = {
             enable = true;
             floating = true;
@@ -189,25 +194,6 @@
             };
           };
           version = 2;
-        };
-
-        colors = {
-          mPrimary = "#1E9177";
-          mOnPrimary = "#B8C8C4";
-          mSecondary = "#167A63";
-          mOnSecondary = "#B8C8C4";
-          mTertiary = "#26A589";
-          mOnTertiary = "#B8C8C4";
-          mError = "#933636";
-          mOnError = "#B8C8C4";
-          mSurface = "#081512";
-          mOnSurface = "#A6B5B1";
-          mSurfaceVariant = "#0F251F";
-          mOnSurfaceVariant = "#99A8A4";
-          mOutline = "#1B6352";
-          mShadow = "#040A09";
-          mHover = "#26A589";
-          mOnHover = "#B8C8C4";
         };
       };
     };

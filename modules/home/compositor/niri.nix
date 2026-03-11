@@ -82,7 +82,7 @@
             }
           ];
 
-          prefer-no-csd = true;
+          prefer-no-csd = false;
 
           spawn-at-startup = [
             { argv = [ "noctalia-shell" ]; }

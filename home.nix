@@ -31,21 +31,21 @@
     ./modules/home
   ];
 
-  application.vscode.enable = true;
+  application.bruno.enable = true;
+  application.discord.enable = true;
+  application.firefox.enable = true;
+  application.google-chrome.enable = true;
   application.jetbrains = {
     enable = true;
     ide = with pkgs.jetbrains; [
       webstorm
     ];
   };
-  application.bruno.enable = true;
-  application.thunderbird.enable = true;
-  application.firefox.enable = true;
-  application.google-chrome.enable = true;
   application.onlyoffice.enable = true;
   application.penpot.enable = true;
-  application.discord.enable = true;
   application.teams.enable = true;
+  application.thunderbird.enable = true;
+  application.vscode.enable = true;
 
   compositor.niri ={
     enable = true;
@@ -59,15 +59,17 @@
     as-default = true;
   };
 
-  terminal.starship.enable = true;
   terminal.ghostty.enable = true;
+  terminal.starship.enable = true;
   terminal.zsh.enable = true;
 
-  tools.git.enable = true;
-  tools.btop.enable = true;
+  tools.ansible.enable = true;
   tools.bitwarden.enable = true;
+  tools.btop.enable = true;
+  tools.git.enable = true;
   tools.keepassxc.enable = true;
   tools.ssh.enable = true;
+  tools.statix.enable = true;
 
   programs = {
     home-manager = {

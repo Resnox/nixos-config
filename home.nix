@@ -31,21 +31,23 @@
     ./modules/home
   ];
 
-  application.bruno.enable = true;
-  application.discord.enable = true;
-  application.firefox.enable = true;
-  application.google-chrome.enable = true;
-  application.jetbrains = {
-    enable = true;
-    ide = with pkgs.jetbrains; [
-      webstorm
-    ];
+  application = {
+    bruno.enable = true;
+    discord.enable = true;
+    firefox.enable = true;
+    google-chrome.enable = true;
+    jetbrains = {
+      enable = true;
+      ide = with pkgs.jetbrains; [
+        webstorm
+      ];
+    };
+    onlyoffice.enable = true;
+    penpot.enable = true;
+    teams.enable = true;
+    thunderbird.enable = true;
+    vscode.enable = true;
   };
-  application.onlyoffice.enable = true;
-  application.penpot.enable = true;
-  application.teams.enable = true;
-  application.thunderbird.enable = true;
-  application.vscode.enable = true;
 
   compositor.niri ={
     enable = true;
@@ -59,17 +61,21 @@
     as-default = true;
   };
 
-  terminal.ghostty.enable = true;
-  terminal.starship.enable = true;
-  terminal.zsh.enable = true;
+  terminal = {
+    ghostty.enable = true;
+    starship.enable = true;
+    zsh.enable = true;
+  };
 
-  tools.ansible.enable = true;
-  tools.bitwarden.enable = true;
-  tools.btop.enable = true;
-  tools.git.enable = true;
-  tools.keepassxc.enable = true;
-  tools.ssh.enable = true;
-  tools.statix.enable = true;
+  tools = {
+    ansible.enable = true;
+    bitwarden.enable = true;
+    btop.enable = true;
+    git.enable = true;
+    keepassxc.enable = true;
+    ssh.enable = true;
+    statix.enable = true;
+  };
 
   programs = {
     home-manager = {

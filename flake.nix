@@ -36,7 +36,7 @@
     in {
       nixosConfigurations = {
         resnox-os = nixpkgs.lib.nixosSystem {
-          pkgs = pkgs;
+          inherit pkgs;
 
           specialArgs = { inherit inputs system; };
 

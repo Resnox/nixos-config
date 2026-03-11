@@ -15,9 +15,13 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.tmp.cleanOnBoot = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    tmp.cleanOnBoot = true;
+  };
 
   networking.hostName = "resnox-os";
   networking.networkmanager.enable = true;
@@ -87,7 +91,6 @@
   };
 
   console.keyMap = "fr";
-  services.xserver.xkb.layout = "fr";
 
   environment.systemPackages = with pkgs; [
     nano
@@ -111,35 +114,45 @@
     };
   };
 
-  services.pulseaudio.enable = false;
+  services = {
+    xserver.xkb.layout = "fr";
 
-  services.displayManager = {
-    sessionPackages = with pkgs; [niri];
-
-    autoLogin = {
+    pipewire = {
       enable = true;
-      user = "resnox";
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
-    
-    gdm = {
+
+    tuned = {
       enable = true;
-      wayland = true;
     };
-  };
-  
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
-  services.tuned = {
-  	enable = true;
-  };
+    upower = {
+      enable = true;
+    };
 
-  services.upower = {
-  	enable = true;
+    pulseaudio.enable = false;
+
+    displayManager = {
+      sessionPackages = with pkgs; [niri];
+
+      autoLogin = {
+        enable = true;
+        user = "resnox";
+      };
+
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+
+    xserver = {
+      videoDrivers = [ "mesa" ];
+    };
+
+    spice-vdagentd.enable = true;
   };
 
   xdg.portal = {
@@ -168,12 +181,6 @@
     XDG_SESSION_DESKTOP = "niri";
     NIXOS_OZONE_WL = "1";
   };
-
-  services.xserver = {
-    videoDrivers = [ "mesa" ];
-  };
-
-  services.spice-vdagentd.enable = true;
 
   system.stateVersion = "25.05";
 }

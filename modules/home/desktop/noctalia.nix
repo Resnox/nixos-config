@@ -10,13 +10,24 @@
 
   config = lib.mkIf config.desktop.noctalia.enable {
     programs = {
-      noctalia-shell = {
+      noctalia = {
         enable = true;
 
         settings = {
           colorSchemes = {
             predefinedScheme = "Osaka jade";
             darkMode = true;
+          };
+
+          appLauncher = {
+            sortByMostUsed = false;
+            viewMode = "grid";
+            showCategories = false;
+            density = "compact";
+            enableSettingsSearch = false;
+            enableWindowsSearch = false;
+            enableSessionSearch = false;
+            terminalCommand = lib.mkIf config.terminal.ghostty.enable "ghostty -e";
           };
 
           bar = {
@@ -124,6 +135,10 @@
               }
               {
                 enabled = true;
+                id = "kcolorscheme";
+              }
+              {
+                enabled = true;
                 id = "qt";
               }
               {
@@ -162,38 +177,38 @@
             colorizeIcons = true;
           };
 
-          appLauncher = {
-            terminalCommand = lib.mkIf config.terminal.ghostty.enable "ghostty -e";
+          plugins = {
+            sources = [
+              {
+                enabled = true;
+                name = "Official Noctalia Plugins";
+                url = "https://github.com/noctalia-dev/noctalia-plugins";
+              }
+            ];
+            states = {
+              polkit-agent = {
+                enabled = true;
+                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+              };
+              clipper = {
+                enabled = true;
+                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+              };
+              mini-docker = {
+                enabled = true;
+                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+              };
+              screenshot = {
+                enabled = true;
+                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+              };
+              screen-recorder = {
+                enabled = true;
+                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+              };
+            };
+            version = 2;
           };
-        };
-
-        plugins = {
-          sources = [
-            {
-              enabled = true;
-              name = "Official Noctalia Plugins";
-              url = "https://github.com/noctalia-dev/noctalia-plugins";
-            }
-          ];
-          states = {
-            clipper = {
-              enabled = true;
-              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-            };
-            mini-docker = {
-              enabled = true;
-              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-            };
-            screenshot = {
-              enabled = true;
-              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-            };
-            screen-recorder = {
-              enabled = true;
-              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-            };
-          };
-          version = 2;
         };
       };
     };

@@ -36,14 +36,9 @@
     discord.enable = true;
     firefox.enable = true;
     google-chrome.enable = true;
-    jetbrains = {
-      enable = true;
-      ide = with pkgs.jetbrains; [
-        webstorm
-      ];
-    };
     onlyoffice.enable = true;
     penpot.enable = true;
+    tabularis.enable = true;
     teams.enable = true;
     thunderbird.enable = true;
     vscode.enable = true;
@@ -71,8 +66,11 @@
     ansible.enable = true;
     bitwarden.enable = true;
     btop.enable = true;
+    codex.enable = true;
+    fastfetch.enable = true;
     git.enable = true;
     keepassxc.enable = true;
+    peazip.enable = true;
     ssh.enable = true;
     statix.enable = true;
   };

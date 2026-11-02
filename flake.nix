@@ -10,12 +10,12 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "git+https://codeberg.org/poz/niri-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

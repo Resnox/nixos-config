@@ -135,7 +135,7 @@
     pulseaudio.enable = false;
 
     displayManager = {
-      sessionPackages = with pkgs; [niri];
+      sessionPackages = [ inputs.niri.packages.${pkgs.system}.niri-unstable ];
 
       autoLogin = {
         enable = true;

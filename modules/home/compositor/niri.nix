@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, nixosConfig, ... }:
+{ pkgs, lib, config, ... }:
 {
   options.compositor.niri = {
     enable = lib.mkEnableOption "Enable Niri";
@@ -13,7 +13,7 @@
       niri = {
         enable = true;
 
-        package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+        package = pkgs.niri;
 
         settings = {
           input = {

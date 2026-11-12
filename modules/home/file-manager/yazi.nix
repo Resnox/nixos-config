@@ -15,6 +15,7 @@
         settings = {
           show_hidden = true;
         };
+        shellWrapperName = "y";
       };
     };
 

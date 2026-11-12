@@ -72,45 +72,45 @@
               "Mod+Shift+Q".close-window = {};
 
               "XF86AudioRaiseVolume" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "increase" ];
+                spawn = [ "noctalia" "msg" "volume-up" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioLowerVolume" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "decrease" ];
+                spawn = [ "noctalia" "msg" "volume-down" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioMute" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "muteOutput" ];
+                spawn = [ "noctalia" "msg" "volume-mute" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioMicMute" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "muteInput" ];
+                spawn = [ "noctalia" "msg" "mic-mute" ];
                 _props.allow-when-locked = true;
               };
 
               "XF86AudioPlay" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "play" ];
+                spawn = [ "noctalia" "msg" "media" "toggle" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioStop" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "pause" ];
+                spawn = [ "noctalia" "msg" "media" "pause" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioPrev" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "prev" ];
+                spawn = [ "noctalia" "msg" "media" "previous" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioNext" = {
-                spawn = [ "noctalia" "ipc" "call" "volume" "next" ];
+                spawn = [ "noctalia" "msg" "media" "next" ];
                 _props.allow-when-locked = true;
               };
 
               "XF86MonBrightnessUp" = {
-                spawn = [ "noctalia" "ipc" "call" "brightness" "increase" ];
+                spawn = [ "noctalia" "msg" "brightness-up" ];
                 _props.allow-when-locked = true;
               };
               "XF86MonBrightnessDown" = {
-                spawn = [ "noctalia" "ipc" "call" "brightness" "decrease" ];
+                spawn = [ "noctalia" "msg" "brightness-down" ];
                 _props.allow-when-locked = true;
               };
 
@@ -149,11 +149,11 @@
               "Mod+Shift+Ctrl+Left".consume-or-expel-window-left = {};
               "Mod+Shift+Ctrl+Right".consume-or-expel-window-right = {};
 
-              "Mod+Escape".spawn = [ "noctalia" "ipc" "call" "controlCenter" "toggle" ];
-              "Mod+Space".spawn = [ "noctalia" "ipc" "call" "launcher" "toggle" ];
-              "Mod+L".spawn = [ "noctalia" "ipc" "call" "sessionMenu" "lockAndSuspend" ];
-              "Mod+C".spawn = [ "noctalia" "ipc" "call" "launcher" "calculator" ];
-              "Mod+X".spawn = [ "noctalia" "ipc" "call" "launcher" "clipboard" ];
+              "Mod+Escape".spawn = [ "noctalia" "msg" "panel-toggle" "control-center" ];
+              "Mod+Space".spawn = [ "noctalia" "msg" "panel-toggle" "launcher" ];
+              "Mod+L".spawn = [ "noctalia" "msg" "session" "lock-and-suspend" ];
+              "Mod+C".spawn = [ "noctalia" "msg" "panel-toggle" "launcher" "/calc " ];
+              "Mod+X".spawn = [ "noctalia" "msg" "panel-toggle" "clipboard" ];
 
               "Mod+WheelScrollDown" = {
                 focus-workspace-down = {};

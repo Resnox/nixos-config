@@ -14,201 +14,54 @@
         enable = true;
 
         settings = {
-          colorSchemes = {
-            predefinedScheme = "Osaka jade";
-            darkMode = true;
+          theme = {
+            mode = "dark";
+            source = "community";
+            community_palette = "Osaka jade";
+            templates.builtin_ids = [ "ghostty" "gtk3" "gtk4" "niri" "kcolorscheme" "qt" "btop" ];
           };
 
-          appLauncher = {
-            sortByMostUsed = false;
-            viewMode = "grid";
-            showCategories = false;
-            density = "compact";
-            enableSettingsSearch = false;
-            enableWindowsSearch = false;
-            enableSessionSearch = false;
-            terminalCommand = lib.mkIf config.terminal.ghostty.enable "ghostty -e";
-          };
-
-          bar = {
-            enable = true;
-            floating = true;
-            widgets = {
-              left = [
-                {
-                  enableColorization = true;
-                  id = "ControlCenter";
-                  useDistroLogo = true;
-                }
-                {
-                  id = "Workspace";
-                }
-              ];
-              center = [
-                {
-                  id = "Taskbar";
-                }
-                {
-                  id = "MediaMini";
-                }
-              ];
-              right = [
-                {
-                  compactMode = true;
-                  id = "SystemMonitor";
-                  showCpuFreq = false;
-                  showCpuTemp = true;
-                  showCpuUsage = true;
-                  showDiskAvailable = false;
-                  showDiskUsage = true;
-                  showDiskUsageAsPercent = false;
-                  showGpuTemp = false;
-                  showLoadAverage = false;
-                  showMemoryAsPercent = false;
-                  showMemoryUsage = true;
-                  showNetworkStats = false;
-                  showSwapUsage = false;
-                }
-                {
-                  displayMode = "graphic";
-                  id = "Battery";
-                }
-                {
-                  id = "Volume";
-                }
-                {
-                  id = "Brightness";
-                }
-                {
-                  id = "plugin:screen-recorder";
-                }
-                {
-                  defaultSettings = {
-                    mode = "region";
-                  };
-                  id = "plugin:screenshot";
-                }
-                {
-                  defaultSettings = {
-                    refreshInterval = 5000;
-                  };
-                  id = "plugin:mini-docker";
-                }
-                {
-                  defaultSettings = {
-                    notecardsEnabled = true;
-                    pincardsEnabled = true;
-                    position = "Bottom";
-                    showCloseButton = false;
-                  };
-                  id = "plugin:clipper";
-                }
-                {
-                  id = "NotificationHistory";
-                }
-                {
-                  drawerEnabled = true;
-                  id = "Tray";
-                }
-                {
-                  id = "Clock";
-                  formatHorizontal = "HH mm ddd, MMM dd";
-                  formatVertical = "HH mm - dd MM";
-                }
-              ];
+          shell = {
+            corner_radius_scale = 0.5;
+            polkit_agent = true;
+            panel.control_center_placement = "floating";
+            launcher = {
+              sort_by_usage = false;
+              app_grid = true;
+              categories = false;
+              compact = true;
+              providers.session.global = false;
+              providers.windows.global = false;
             };
           };
 
-          templates = {
-            activeTemplates = [
-              {
-                enabled = true;
-                id = "ghostty";
-              }
-              {
-                enabled = true;
-                id = "gtk";
-              }
-              {
-                enabled = true;
-                id = "niri";
-              }
-              {
-                enabled = true;
-                id = "kcolorscheme";
-              }
-              {
-                enabled = true;
-                id = "qt";
-              }
-              {
-                enabled = true;
-                id = "code";
-              }
-              {
-                enabled = true;
-                id = "btop";
-              }
-              {
-                enabled = true;
-                id = "yazi";
-              }
+          location.address = "Charleville-Mézieres";
+
+          bar.main = {
+            start = [ "control-center" "workspaces" ];
+            center = [ "taskbar" "media" ];
+            end = [
+              "cpu" "cpu_temp" "disk" "ram"
+              "battery" "volume" "brightness" "recorder" "screenshot"
+              "clipboard" "notifications" "tray" "clock"
             ];
-            enableUserTheming = false;
           };
 
-          location = {
-            name = "Charleville-Mézieres";
-          };
-
-          controlCenter = {
-            position = "center";
-          };
-
-          ui = {
-            panelBackgroundOpacity = 1;
-            borderRadius = 0.5;
-          };
-
-          dock = {
-            enable = true;
-            radiusRatio = 0.5;
-            size = 0.5;
-            colorizeIcons = true;
-          };
-
-          plugins = {
-            sources = [
-              {
-                enabled = true;
-                name = "Official Noctalia Plugins";
-                url = "https://github.com/noctalia-dev/noctalia-plugins";
-              }
-            ];
-            states = {
-              polkit-agent = {
-                enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-              };
-              clipper = {
-                enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-              };
-              mini-docker = {
-                enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-              };
-              screenshot = {
-                enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-              };
-              screen-recorder = {
-                enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-              };
+          widget = {
+            cpu = { type = "sysmon"; stat = "cpu_usage"; };
+            cpu_temp = { type = "sysmon"; stat = "cpu_temp"; };
+            disk = { type = "sysmon"; stat = "disk_used"; };
+            ram = { type = "sysmon"; stat = "ram_used"; };
+            battery.display_mode = "graphic";
+            clock = {
+              format = "{:%H %M %a, %b %d}";
+              vertical_format = "{:%H %M - %d %m}";
             };
-            version = 2;
+            recorder.type = "noctalia/screen_recorder:recorder";
           };
+
+          dock.enabled = true;
+          plugins.enabled = [ "noctalia/screen_recorder" ];
         };
       };
     };
@@ -217,6 +70,7 @@
       xdg-desktop-portal
       xdg-desktop-portal-gtk
       gpu-screen-recorder
+      slurp
     ];
 
     xdg.portal = {

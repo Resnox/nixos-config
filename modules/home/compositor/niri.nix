@@ -55,7 +55,7 @@
           hotkey-overlay.skip-at-startup = {};
 
           _children = [
-            { spawn-at-startup = [ "noctalia-shell" ]; }
+            { spawn-at-startup = [ "noctalia" ]; }
             {
               window-rule = {
                 geometry-corner-radius = 8.0;
@@ -72,45 +72,45 @@
               "Mod+Shift+Q".close-window = {};
 
               "XF86AudioRaiseVolume" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "increase" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "increase" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioLowerVolume" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "decrease" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "decrease" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioMute" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "muteOutput" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "muteOutput" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioMicMute" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "muteInput" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "muteInput" ];
                 _props.allow-when-locked = true;
               };
 
               "XF86AudioPlay" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "play" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "play" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioStop" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "pause" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "pause" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioPrev" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "prev" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "prev" ];
                 _props.allow-when-locked = true;
               };
               "XF86AudioNext" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "volume" "next" ];
+                spawn = [ "noctalia" "ipc" "call" "volume" "next" ];
                 _props.allow-when-locked = true;
               };
 
               "XF86MonBrightnessUp" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "brightness" "increase" ];
+                spawn = [ "noctalia" "ipc" "call" "brightness" "increase" ];
                 _props.allow-when-locked = true;
               };
               "XF86MonBrightnessDown" = {
-                spawn = [ "noctalia-shell" "ipc" "call" "brightness" "decrease" ];
+                spawn = [ "noctalia" "ipc" "call" "brightness" "decrease" ];
                 _props.allow-when-locked = true;
               };
 
@@ -149,11 +149,11 @@
               "Mod+Shift+Ctrl+Left".consume-or-expel-window-left = {};
               "Mod+Shift+Ctrl+Right".consume-or-expel-window-right = {};
 
-              "Mod+Escape".spawn = [ "noctalia-shell" "ipc" "call" "controlCenter" "toggle" ];
-              "Mod+Space".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "toggle" ];
-              "Mod+L".spawn = [ "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend" ];
-              "Mod+C".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "calculator" ];
-              "Mod+X".spawn = [ "noctalia-shell" "ipc" "call" "launcher" "clipboard" ];
+              "Mod+Escape".spawn = [ "noctalia" "ipc" "call" "controlCenter" "toggle" ];
+              "Mod+Space".spawn = [ "noctalia" "ipc" "call" "launcher" "toggle" ];
+              "Mod+L".spawn = [ "noctalia" "ipc" "call" "sessionMenu" "lockAndSuspend" ];
+              "Mod+C".spawn = [ "noctalia" "ipc" "call" "launcher" "calculator" ];
+              "Mod+X".spawn = [ "noctalia" "ipc" "call" "launcher" "clipboard" ];
 
               "Mod+WheelScrollDown" = {
                 focus-workspace-down = {};

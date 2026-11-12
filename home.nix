@@ -20,13 +20,7 @@
     };
 
   };
-
-  systemd.user.sessionVariables = {
-    WAYLAND_DISPLAY = "$WAYLAND_DISPLAY";
-    XDG_SESSION_TYPE = "$XDG_SESSION_TYPE";
-    XDG_CURRENT_DESKTOP = "$XDG_CURRENT_DESKTOP";
-  };
-
+  
   imports = [
     ./modules/home
   ];

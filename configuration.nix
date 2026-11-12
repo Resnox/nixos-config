@@ -102,10 +102,6 @@
   hardware = {
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vpl-gpu-rt
-      ];
     };
 
     bluetooth = {
@@ -113,6 +109,8 @@
       powerOnBoot = true;
     };
   };
+
+  programs.niri.enable = true;
 
   services = {
     xserver.xkb.layout = "fr";
@@ -135,10 +133,8 @@
     pulseaudio.enable = false;
 
     displayManager = {
-      sessionPackages = [ pkgs.niri ];
-
       autoLogin = {
-        enable = true;
+        enable = false;
         user = "resnox";
       };
 

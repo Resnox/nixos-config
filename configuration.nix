@@ -134,7 +134,7 @@
 
     displayManager = {
       autoLogin = {
-        enable = false;
+        enable = true;
         user = "resnox";
       };
 

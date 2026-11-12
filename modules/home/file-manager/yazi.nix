@@ -13,8 +13,9 @@
       yazi = {
         enable = true;
         settings = {
-          show_hidden = true;
+          show-hidden = true;
         };
+        
         shellWrapperName = "y";
       };
     };
